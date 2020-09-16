@@ -1,5 +1,5 @@
 {
-  "name": "fieb-corp-cobranca-load-test",
+  "name": "fieb-corp-load-tester",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
