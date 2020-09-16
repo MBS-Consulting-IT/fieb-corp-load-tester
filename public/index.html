@@ -1,0 +1,115 @@
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teste de Carga - Processo de Cobrança</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<main class="app-container container-sm">
+
+  <div class="title">
+    <div class="title-icon">
+      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clipboard-data" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+        <path fill-rule="evenodd" d="M9.5 1h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+        <path d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0V9z"/>
+      </svg>
+    </div>
+    <h2>Teste de Carga</h2>
+  </div>
+
+  <form class="app-form">
+    <div class="form-group">
+      <label for="ws-option">Tipo de Webservice</label>
+      <div class="">
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-light active">
+            <input type="radio" name="ws-option" value="rest" checked><small>REST API</small> - Instances
+          </label>
+          <label class="btn btn-light">
+            <input type="radio" name="ws-option" value="soap"><small>SOAP API</small> - CreateInstance
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="urlBase">URL Base do Orquestra</label>
+      <div class="input-group">
+        <input name="urlBase" type="text" class="form-control"
+          placeholder="https://d-sisweb.fieb.org.br/FIEB/Orquestra" readonly>
+        <div class="input-group-append">
+          <span class="input-group-text app-ws-hint"></span>
+        </div>
+      </div>
+      <small class="form-text text-muted">Ambiente onde serão criadas as instâncias de teste.</small>
+    </div>
+    <div class="form-group">
+      <label for="codFlow">Código do Processo</label>
+      <input name="codFlow" type="text" class="form-control input-sm" required>
+      <small class="form-text text-muted">Codflow do processo no qual serão criadas as instâncias.</small>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Token de Autenticação</label>
+      <input name="token" type="text" class="form-control" required>
+      <small class="form-text text-muted">Token de autenticação de um usuário com permissão para criar
+        instâncias no processo escolhido.</small>
+    </div>
+    <div class="form-group">
+      <label for="quantity">Quantidade de Instâncias</label>
+      <input name="quantity" type="number" min="1" max="10000" class="form-control input-sm" required>
+    </div>
+    <div class="form-group form-check">
+      <input name="isSimulation" type="checkbox" class="form-check-input" required>
+      <label class="form-check-label" for="isSimulation">Simulação</label>
+      <small class="form-text text-muted">Utilizar processo do tipo simulação no Orquestra</small>
+    </div>
+    <button type="submit" class="btn btn-primary js-start">Iniciar Teste</button>
+  </form>
+
+  <div class="app-progress d-none border-top">
+    <div class="title">
+      <div class="title-icon">
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cloud-upload-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M8 0a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 4.095 0 5.555 0 7.318 0 9.366 1.708 11 3.781 11H7.5V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11h4.188C14.502 11 16 9.57 16 7.773c0-1.636-1.242-2.969-2.834-3.194C12.923 1.999 10.69 0 8 0zm-.5 14.5V11h1v3.5a.5.5 0 0 1-1 0z"/>
+        </svg>
+      </div>
+      <h2>Progresso</h2>
+    </div>
+
+    <ul class="list-group">
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Quantidade Total
+        <span class="badge badge-secondary badge-pill app-perf-total">150</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Instâncias Criadas
+        <span class="badge badge-primary badge-pill app-perf-done">0</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Tempo de Execução
+        <time class="app-perf-time">00:00</time>
+      </li>
+    </ul>
+
+    <div class="app-progress-bar progress">
+      <div class="progress-bar app-perf-progress" role="progressbar" style="width: 0%;">0%</div>
+    </div>
+  </div>
+</main>
+</body>
+
+</html>
