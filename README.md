@@ -11,11 +11,11 @@
 ## Sumário
 
 * [Sobre a aplicação](#sobre-a-aplicação)
-  * [Construído com](#construido-com)
-* [Iniciando a aplicação](#iniciando-a-aplicacao)
-  * [Pré-requisitos](#pre-requisitos)
-  * [Instalação](#instalacao)
-* [Utilização](#utilizacao)
+  * [Construído com](#construído-com)
+* [Iniciando a aplicação](#iniciando-a-aplicação)
+  * [Pré-requisitos](#pré-requisitos)
+  * [Instalação](#instalação)
+* [Utilização](#utilização)
 
 
 
@@ -38,7 +38,7 @@ Outras Alternativas (não implementadas):
 Cabe destacar que a estratégia utilizada deve estar alinhada a capacidade de resposta do servidor, já que o os objetivos principais são evitar a degradação de resposta e viabilizar baixo tempo para geração dos lotes. Isto somente pode ser evidenciado através de indicadores de performance do servidor em si e do servidor de aplicação durante os disparos em massa.
 
 ### Construído com
-Restringimos o uso de tecnologias para promover um entendimento, utilizando basicamente tecnologias web nativas (HTML, JS e CSS).
+Restringimos o uso de tecnologias para promover um entendimento geral, utilizando basicamente tecnologias web nativas (HTML, JS e CSS).
 
 * [Bootstrap](https://getbootstrap.com/)
 * [Node.js](https://nodejs.org/en/) * _para utilização de webpack_
@@ -67,7 +67,7 @@ npm install npm@latest -g
 
 1. Clonar o repositório
 ```sh
-git clone https://github.com/your_username_/Project-Name.git
+git clone https://github.com/mbs-consulting/fieb-corp-load-tester.git
 ```
 3. Instalar os pacotes com NPM
 ```sh
